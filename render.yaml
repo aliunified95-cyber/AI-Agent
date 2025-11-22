@@ -5,7 +5,7 @@ services:
     plan: starter
     region: oregon
     buildCommand: cd backend && python3 -m pip install --upgrade pip && python3 -m pip install --no-cache-dir -r requirements.txt
-    startCommand: cd backend && gunicorn app.main:app --bind 0.0.0.0:$PORT --workers 4
+    startCommand: cd backend && gunicorn app.main:app --bind 0.0.0.0:$PORT --workers 4 -k uvicorn.workers.UvicornWorker
     dockerfilePath: ""
     envVars:
       - key: DATABASE_URL
