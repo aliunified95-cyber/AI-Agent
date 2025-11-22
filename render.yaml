@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: zain-ai-voice-agent-backend
+    env: python
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && gunicorn app.main:app --host 0.0.0.0 --port $PORT --workers 4
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: CLAUDE_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_VOICE_ID
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
