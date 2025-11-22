@@ -1,7 +1,7 @@
 import pdfplumber
 import re
 import json
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from app.models.order import OrderData, OrderType, LineType, FinancialType, Customer, LineDetails, Device, Plan, Financial
 
 def parse_order_pdf(pdf_path: str) -> Dict[str, Any]:
