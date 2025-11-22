@@ -2,8 +2,11 @@ services:
   - type: web
     name: zain-ai-voice-agent-backend
     env: python
-    buildCommand: cd backend && pip install --upgrade pip setuptools wheel && pip install --no-cache-dir -r requirements.txt
-    startCommand: cd backend && gunicorn app.main:app --host 0.0.0.0 --port $PORT --workers 4
+    plan: starter
+    region: oregon
+    buildCommand: cd backend && python3 -m pip install --upgrade pip && python3 -m pip install --no-cache-dir -r requirements.txt
+    startCommand: cd backend && gunicorn app.main:app --bind 0.0.0.0:$PORT --workers 4
+    dockerfilePath: ""
     envVars:
       - key: DATABASE_URL
         sync: false
