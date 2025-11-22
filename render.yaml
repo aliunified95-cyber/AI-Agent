@@ -2,7 +2,7 @@ services:
   - type: web
     name: zain-ai-voice-agent-backend
     env: python
-    buildCommand: cd backend && pip install -r requirements.txt
+    buildCommand: cd backend && pip install --upgrade pip setuptools wheel && pip install --no-cache-dir -r requirements.txt
     startCommand: cd backend && gunicorn app.main:app --host 0.0.0.0 --port $PORT --workers 4
     envVars:
       - key: DATABASE_URL
@@ -17,6 +17,4 @@ services:
         sync: false
       - key: APP_ENV
         value: production
-      - key: PYTHON_VERSION
-        value: 3.11.0
 
